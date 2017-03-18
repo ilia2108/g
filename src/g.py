@@ -1,4 +1,11 @@
 import nltk.data
-is_text = 'Поскольку растет сеть, растут и требования к вычислительным мощностям. Поскольку вероятность получения вознаграждения отдельным "майнером" авна соотношению мощности его компьютера к мощности всех др. компьютеров сети биткоина.'
+fs = open('input', 'r', encoding='utf-8').read().split('\n')
+is_text = fs[1]
 tokenizer = nltk.data.load('russian.pickle')
-print ('\n-----\n'.join(tokenizer.tokenize(is_text.strip())))
+sentences = tokenizer.tokenize(is_text.upper().strip())
+cnt = 0
+for s in sentences:
+    if fs[0].upper() in s: cnt += 1
+print (cnt)
+
+
